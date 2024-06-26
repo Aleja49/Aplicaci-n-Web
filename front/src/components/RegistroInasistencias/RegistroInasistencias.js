@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheckCircle, faExclamationCircle, faUser, faCaretDown, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate en lugar de useHistory
+import { useNavigate } from 'react-router-dom';
 import '../../styles/RegistroInasistencias.css';
 
 const RegistroInasistencias = () => {
-  const navigate = useNavigate(); // Usa useNavigate para navegar entre rutas
-
+  const navigate = useNavigate();
   const [showLogout, setShowLogout] = useState(false);
   const [formData, setFormData] = useState({
     nombreEstudiante: '',
@@ -29,10 +29,8 @@ const RegistroInasistencias = () => {
     let newValue = value;
 
     if (name === 'nombreEstudiante') {
-      // Solo letras y espacios permitidos
       newValue = value.replace(/[^A-Za-zñÑáéíóúÁÉÍÓÚ\s]/g, '');
     } else if (name === 'numeroFicha') {
-      // Solo números permitidos
       newValue = value.replace(/\D/g, '');
     }
 
@@ -44,19 +42,31 @@ const RegistroInasistencias = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // Aquí puedes hacer el envío de los datos o las operaciones necesarias
+    axios.post('http://localhost:4000/inasistencias', {
+      nombre_estudiante: formData.nombreEstudiante,
+      fecha_inasistencia: formData.fecha,
+      justificada: formData.justificaInasistencia
+    })
+    .then(response => {
+      console.log(response.data);
+      alert('Inasistencia registrada correctamente');
+    })
+    .catch(error => {
+      console.error('Hubo un error al registrar la inasistencia:', error);
+      alert('Hubo un error al registrar la inasistencia');
+    });
   };
 
   const redirectToInasistencias = () => {
-    navigate('/inasistencias'); // Redirige a la ruta de inasistencias al hacer clic en Ausencias
+    navigate('/inasistencias');
   };
 
   const redirectToReporteEstudiantes = () => {
-    navigate('/reporte-estudiantes'); // Redirige a la ruta de ReporteEstudiantes.js
+    navigate('/reporte-estudiantes');
   };
 
   const redirectToPerfil = () => {
-    navigate('/perfil'); // Redirige a la ruta de Perfil.js
+    navigate('/perfil');
   };
 
   return (

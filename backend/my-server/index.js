@@ -6,10 +6,6 @@ const ClienteRoutes = require('./routes/ClienteRoutes');
 const LoginRoutes = require('./routes/estudianteRoutes');
 const fallasRoutes = require('./routes/fallasRoutes');
 
-
-
-
-
 const app = express();
 const port = 4000;
 
@@ -18,10 +14,7 @@ app.use(bodyParser.json());
 
 app.use('/Cliente', ClienteRoutes);
 app.use('/estudiante', LoginRoutes);
-app.use('/fallas', fallasRoutes);
-
-
-
+app.use('/inasistencias', fallasRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
