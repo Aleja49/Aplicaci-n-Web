@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/Registro.css'; // Asegúrate de tener los estilos importados correctamente
@@ -27,9 +28,35 @@ const Registro = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Aquí puedes manejar la lógica de registro, como enviar los datos al backend
-    console.log(`Nombre: ${nombre}, Email: ${email}, Password: ${password}, Confirm Password: ${confirmPassword}`);
-    // También podrías redirigir a la siguiente página, dependiendo de tu lógica de negocio
+    if (password !== confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
+    axios.post('http://localhost:4000/Cliente', {
+      full_name: nombre,
+      email: email,
+      password: password
+    })
+    .then(response => {
+      console.log(response.data);
+      mostrarAlerta();
+    })
+    .catch(error => {
+      console.error('Hubo un error al registrar al usuario:', error);
+      alert('Hubo un error al registrar al usuario');
+    });
+  };
+
+  const mostrarAlerta = () => {
+    const alerta = document.createElement('div');
+    alerta.textContent = 'Usuario creado correctamente';
+    alerta.classList.add('alerta-creado');
+    document.body.appendChild(alerta);
+
+    setTimeout(() => {
+      alerta.remove();
+    }, 3000);
   };
 
   return (
@@ -99,4 +126,3 @@ const Registro = () => {
 };
 
 export default Registro;
-
