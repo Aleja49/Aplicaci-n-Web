@@ -1,0 +1,187 @@
+.reporte-estudiantes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .rectangle-title {
+    position: absolute;
+    left: 900px; /* Ajusta la posición desde la izquierda */
+    top: 90px; /* Ajusta la posición desde la parte superior */
+    font-weight: bold;
+  }
+  
+  .new-text {
+    position: absolute;
+    left: 400px; /* Ajusta la posición desde la izquierda */
+    top: 220px; /* Ajusta la posición desde la parte superior */
+    font-size: 24px;
+    color: #555; /* Color del texto adicional */
+  }
+  
+  .search-box {
+    position: absolute;
+    left: 1250px; /* Ajusta la posición desde la izquierda */
+    top: 245px; /* Ajusta la posición desde la parte superior */
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .left-rectangle {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    bottom: 0;
+    width: 300px;
+    background-color: #2883CC;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .rectangle-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .rectangle-button {
+    background: #2883CC;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 20px 45px;
+    cursor: pointer;
+    width: 115%;
+    height: 70px;
+    text-align: left;
+    text-decoration: none;
+    outline: none;
+    line-height: 1;
+    margin-top: 20px;
+    border-radius: 0;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+  }
+  
+  .rectangle-button:hover,
+  .rectangle-button:active {
+    background-color: #2E49BB;
+  }
+  
+  .top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 50px;
+    background-color: #2883CC;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .user-name {
+    margin-right: 15px;
+    font-size: 18px;
+  }
+  
+  .profile-icon {
+    margin-right: 15px;
+    font-size: 18px;
+  }
+  
+  .caret-icon {
+    margin-right: 30px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .logout-menu {
+    position: absolute;
+    top: calc(100% + 20px);
+    right: 60px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .logout-menu button {
+    background: none;
+    border: none;
+    padding: 5px 20px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logout-menu button:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .logout-menu .logout-icon {
+    font-size: 16px;
+    margin-right: 5px;
+    color: black;
+  }
+  
+  .logout-menu .logout-text {
+    color: black;
+    margin-left: 5px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .button-icon {
+    margin-right: 10px;
+  }
+  
+  /* Estilos para la tabla de fallas */
+  .fallas-table {
+    margin-top: 350px; /* Ajusta el margen superior para la tabla */
+    width: 59%; /* Ajusta el ancho de la tabla */
+    border-collapse: collapse;
+  }
+  
+  .fallas-table th, .fallas-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .fallas-table th {
+    background-color: #2883CC;
+    color: white;
+  }
+  
+  .fallas-table td {
+    background-color: #fff;
+  }
+  

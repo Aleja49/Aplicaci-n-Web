@@ -1,0 +1,93 @@
+/* Estilos completos para el formulario de perfil */
+
+/* Estilos del contenedor principal */
+.perfil-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../assets/fondo.jpg'); /* Ruta de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Estilos del formulario de perfil */
+  .perfil-form {
+    width: 350px; /* Ancho del contenedor */
+    height: auto; /* Alto ajustado automáticamente */
+    padding: 50px; /* Ajusta el padding para que sea más compacto */
+    border: 1px solid #2E49BB;
+    border-radius: 20px;
+    background-color: #2E49BB;
+    text-align: center; /* Centra el texto y elementos dentro del formulario */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Estilos para el título del formulario */
+  .perfil-form h2 {
+    margin-bottom: 30px;
+    margin-top: 0; /* Ajusta el margen superior para posicionar el texto más arriba */
+    font-size: 32px; /* Ajusta el tamaño del texto */
+    color: white; /* Cambia el color del texto si es necesario */
+  }
+  
+  /* Estilos para los campos del formulario */
+  .form-control {
+    margin-bottom: 20px; /* Ajusta el margen inferior de los campos */
+  }
+  
+  .form-control label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white; /* Cambia el color del texto de la etiqueta si es necesario */
+    font-size: 18px; /* Ajusta el tamaño del texto */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black; /* Cambia el color del icono */
+    font-size: 18px; /* Tamaño del icono */
+  }
+  
+  .form-control input {
+    width: calc(100% - 5px); /* Ajusta el ancho del input restando el espacio para el ícono */
+    padding: 12px 15px; /* Ajusta el padding */
+    padding-left: 40px; /* Deja espacio a la izquierda para el ícono */
+    font-size: 16px; /* Tamaño de fuente */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 25px; /* Borde redondeado */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    transition: border-color 0.2s ease-in-out; /* Añade una transición suave */
+  }
+  
+  .form-control input:focus {
+    outline: none;
+    border-color: dodgerblue;
+  }
+  
+  /* Estilos para el botón del formulario */
+  button {
+    width: 100%;
+    padding: 15px; /* Ajusta el padding */
+    background-color: #1A1D32;
+    color: white;
+    border: none;
+    border-radius: 25px; /* Borde redondeado */
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+    transition: background-color 0.2s ease-in-out; /* Añade una transición suave */
+  }
+  
+  button:hover {
+    background-color: #0073e6;
+  }  
