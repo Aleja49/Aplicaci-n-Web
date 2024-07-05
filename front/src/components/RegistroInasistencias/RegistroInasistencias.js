@@ -44,6 +44,7 @@ const RegistroInasistencias = () => {
     e.preventDefault();
     axios.post('http://localhost:4000/inasistencias', {
       nombre_estudiante: formData.nombreEstudiante,
+      numero_ficha: formData.numeroFicha,
       fecha_inasistencia: formData.fecha,
       justificada: formData.justificaInasistencia
     })

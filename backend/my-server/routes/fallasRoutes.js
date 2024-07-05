@@ -4,10 +4,10 @@ const db = require('../config/db');
 
 // Ruta para crear una nueva inasistencia
 router.post('/', (req, res) => {
-    const { nombre_estudiante, fecha_inasistencia, justificada } = req.body;
+    const { nombre_estudiante, numero_ficha, fecha_inasistencia, justificada } = req.body;
 
-    const sql = 'INSERT INTO inasistencias (nombre_estudiante, fecha_inasistencia, justificada) VALUES (?, ?, ?)';
-    db.query(sql, [nombre_estudiante, fecha_inasistencia, justificada], (err, result) => {
+    const sql = 'INSERT INTO inasistencias (nombre_estudiante, numero_ficha, fecha_inasistencia, justificada) VALUES (?, ?, ?, ?)';
+    db.query(sql, [nombre_estudiante, numero_ficha, fecha_inasistencia, justificada], (err, result) => {
         if (err) {
             return res.status(500).send(err);
         }
@@ -44,10 +44,10 @@ router.get('/:nombre_estudiante', (req, res) => {
 // Ruta para actualizar una inasistencia por el nombre del estudiante
 router.put('/:nombre_estudiante', (req, res) => {
     const { nombre_estudiante } = req.params;
-    const { fecha_inasistencia, justificada } = req.body;
+    const { numero_ficha, fecha_inasistencia, justificada } = req.body;
 
-    const sql = 'UPDATE inasistencias SET fecha_inasistencia = ?, justificada = ? WHERE nombre_estudiante = ?';
-    db.query(sql, [fecha_inasistencia, justificada, nombre_estudiante], (err, result) => {
+    const sql = 'UPDATE inasistencias SET numero_ficha = ?, fecha_inasistencia = ?, justificada = ? WHERE nombre_estudiante = ?';
+    db.query(sql, [numero_ficha, fecha_inasistencia, justificada, nombre_estudiante], (err, result) => {
         if (err) {
             return res.status(500).send(err);
         }
