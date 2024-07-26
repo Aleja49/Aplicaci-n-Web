@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV, faTimes, faCheckCircle, faExclamationCircle, faUser, faCaretDown, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheckCircle, faExclamationCircle, faUser, faCaretDown, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/Inasistencias.css';
 
 const Inasistencias = () => {
   const navigate = useNavigate();
   const [showLogout, setShowLogout] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const [inasistencias, setInasistencias] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:4000/inasistencias')
+      .then(response => {
+        setInasistencias(response.data);
+      })
+      .catch(error => {
+        console.error('Hubo un error al obtener las inasistencias:', error);
+      });
+  }, []);
 
   const toggleLogoutMenu = () => {
     setShowLogout(!showLogout);
@@ -16,10 +27,6 @@ const Inasistencias = () => {
   const handleLogout = () => {
     console.log('Cerrar sesión');
     setShowLogout(false);
-  };
-
-  const toggleOptionsMenu = () => {
-    setShowMenu(!showMenu);
   };
 
   const redirectToRegistroInasistencias = () => {
@@ -46,12 +53,7 @@ const Inasistencias = () => {
       <div className="additional-content">
         <div className="additional-text">
           <p className="large-text">Registros mostrados</p>
-          <span className="gray-box">0</span>
-        </div>
-
-        {/* Nuevo contenedor similar al existente */}
-        <div className="custom-container">
-          {/* Contenido eliminado */}
+          <span className="gray-box">{inasistencias.length}</span>
         </div>
 
         {/* Tabla de datos */}
@@ -66,28 +68,24 @@ const Inasistencias = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Nicoll Alejandra Prieto Puentes</td>
-              <td>2693497</td>
-              <td>2024-06-23</td>
-              <td>
-                <select className="justify-select">
-                  <option value="si">SI</option>
-                  <option value="no">NO</option>
-                </select>
-              </td>
-              <td>
-                <div className="actions">
-                  <FontAwesomeIcon icon={faEllipsisV} className="actions-icon" onClick={toggleOptionsMenu} />
-                  {showMenu && (
-                    <div className="options-menu">
-                      <button onClick={() => console.log('Editar')}>Editar</button>
-                      <button onClick={() => console.log('Eliminar')}>Eliminar</button>
-                    </div>
-                  )}
-                </div>
-              </td>
-            </tr>
+            {inasistencias.map((inasistencia) => (
+              <tr key={inasistencia.id}>
+                <td>{inasistencia.nombre_estudiante}</td>
+                <td>{inasistencia.numero_ficha}</td>
+                <td>{inasistencia.fecha_inasistencia}</td>
+                <td>{inasistencia.justificada ? 'Si' : 'No'}</td>
+                <td>
+                  <div className="actions">
+                    <button className="action-button" onClick={() => console.log('Botón 1 clicado')}>
+                      Editar
+                    </button>
+                    <button className="action-button" onClick={() => console.log('Botón 2 clicado')}>
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -26,7 +26,7 @@
   
   .search-box {
     position: absolute;
-    left: 1250px; /* Ajusta la posición desde la izquierda */
+    left: 1180px; /* Ajusta la posición desde la izquierda */
     top: 245px; /* Ajusta la posición desde la parte superior */
   }
   
@@ -166,7 +166,9 @@
   /* Estilos para la tabla de fallas */
   .fallas-table {
     margin-top: 350px; /* Ajusta el margen superior para la tabla */
-    width: 59%; /* Ajusta el ancho de la tabla */
+    width: 1430px; /* Ajusta el ancho de la tabla */
+    height: 100px;
+    margin-left: 310px;
     border-collapse: collapse;
   }
   

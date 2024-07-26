@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheckCircle, faExclamationCircle, faUser, faCaretDown, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,13 @@ const RegistroInasistencias = () => {
     fecha: '',
     justificaInasistencia: ''
   });
+  const [maxDate, setMaxDate] = useState('');
+
+  useEffect(() => {
+    // Set maxDate to the current date in ISO format
+    const today = new Date().toISOString().split('T')[0];
+    setMaxDate(today);
+  }, []);
 
   const toggleLogoutMenu = () => {
     setShowLogout(!showLogout);
@@ -106,6 +113,7 @@ const RegistroInasistencias = () => {
             value={formData.fecha}
             onChange={handleChange}
             required
+            max={maxDate}  // Setting the max date
           />
         </label>
         <label>
